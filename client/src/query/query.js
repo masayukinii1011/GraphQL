@@ -39,3 +39,11 @@ export const ADD_DIRECTOR = gql`
       age
     }
   }`
+
+//映画削除クエリ
+export const DELETE_MOVIE = gql`
+  mutation($id: ID!){
+    deleteMovie(id: $id){
+      id
+    }
+  }`
