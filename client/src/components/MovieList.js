@@ -4,7 +4,8 @@ import { Card, CardBody, Table } from 'reactstrap';
 import { MOVIE_LIST } from '../query/query'
 
 function MovieList() {
-  const { loading, error, data } = useQuery(MOVIE_LIST)
+  const { loading, error, data: movieList } = useQuery(MOVIE_LIST)
+
   if (loading) {
     return <p>Loading...</p>
   } else if (error) {
@@ -23,7 +24,7 @@ function MovieList() {
             </thead>
             <tbody>
               {
-                data.movies.map(({ id, name, genre, director }) => (
+                movieList.movies.map(({ id, name, genre, director }) => (
                   <tr key={id}>
                     <td>{name}</td>
                     <td>{genre}</td>

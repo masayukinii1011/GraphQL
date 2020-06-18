@@ -7,16 +7,21 @@ import { MOVIE_LIST, DIRECTOR_LIST, ADD_MOVIE, ADD_DIRECTOR } from '../query/que
 function SideNav() {
   const { data: directorList } = useQuery(DIRECTOR_LIST);
 
+  //追加メソッド
   const [addMovie] = useMutation(ADD_MOVIE, { refetchQueries: [{ query: MOVIE_LIST }], awaitRefetchQueries: true });
   const [addDirector] = useMutation(ADD_DIRECTOR, { refetchQueries: [{ query: DIRECTOR_LIST }], awaitRefetchQueries: true });
 
-  const onSubmitMovie = ({ movieName, movieGenre, directorId }) => {
+  //フォーム送信メソッド
+  const onSubmitMovie = ({ movieName, movieGenre, directorId }, e) => {
     addMovie({ variables: { name: movieName, genre: movieGenre, directorId } })
+    e.target.reset()
   };
-  const onSubmitDirector = ({ directorName, directorAge }) => {
+  const onSubmitDirector = ({ directorName, directorAge }, e) => {
     addDirector({ variables: { name: directorName, age: parseInt(directorAge) } })
+    e.target.reset()
   };
 
+  //フォームと連携
   const { handleSubmit: handleSubmitMovie, register: registerMovie } = useForm();
   const { handleSubmit: handleSubmitDirector, register: registerDirector } = useForm();
 
