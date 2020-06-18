@@ -29,7 +29,7 @@ function MovieList() {
                   <tr key={id}>
                     <td>{name}</td>
                     <td>{genre}</td>
-                    <td>{director}</td>
+                    <td>{director.name}</td>
                   </tr>
                 ))
               }

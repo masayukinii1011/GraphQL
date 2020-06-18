@@ -11,7 +11,7 @@ const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
 });
 
-//ApolloProviderコンポーネント内でclientと通信可能
+//ApolloProviderでデータを渡す
 function App() {
   return (
     <div className="App">
