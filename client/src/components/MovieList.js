@@ -1,9 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import { Card, CardBody, Table } from 'reactstrap';
 import { MOVIE_LIST } from '../query/query'
-
 
 function MovieList() {
   const { loading, error, data } = useQuery(MOVIE_LIST)
